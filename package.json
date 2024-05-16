@@ -1,6 +1,0 @@
-{
-	"devDependencies": {
-		"eslint": "^9.2.0",
-		"@rocketseat/eslint-config": "^2.2.2"
-	}
-}
