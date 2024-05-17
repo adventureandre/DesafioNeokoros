@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   mysql:
-    container_name: nest-clean-mysql
+    container_name: task-mysql
     image: mysql
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: docker
-      MYSQL_DATABASE: nest-clean
+      MYSQL_DATABASE: task-neokoros
     volumes:
       - ./data/mysql:/var/lib/mysql
