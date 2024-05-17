@@ -12,6 +12,7 @@ import { z } from 'zod'
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe'
 
 const createAccountBodySchema = z.object({
+  name: z.string(),
   email: z.string().email(),
   password: z.string(),
 })
@@ -26,7 +27,7 @@ export class CreateAccountController {
   @HttpCode(201)
   @UsePipes(new ZodValidationPipe(createAccountBodySchema))
   async handle(@Body() body: CreateAccountBodySchema) {
-    const { email, password } = body
+    const { name, email, password } = body
 
     const userWithSameEmail = await this.prisma.user.findUnique({
       where: { email },
@@ -39,7 +40,7 @@ export class CreateAccountController {
     const hashedPassword = await hash(password, 8)
 
     await this.prisma.user.create({
-      data: { email, password: hashedPassword },
+      data: { name, email, password: hashedPassword },
     })
   }
 }
