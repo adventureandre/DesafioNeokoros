@@ -14,9 +14,10 @@ import { JwtStrategy } from './jwt.strategy'
       useFactory(config: ConfigService<Env, true>) {
         const privateKey = config.get('JWT_PRIVATE_KEY', { infer: true })
         const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true })
+        const expiresIn = config.get('JWT_EXPIRES_IN', { infer: true })
 
         return {
-          signOptions: { algorithm: 'RS256' },
+          signOptions: { algorithm: 'RS256', expiresIn },
           privateKey: Buffer.from(privateKey, 'base64'),
           publicKey: Buffer.from(publicKey, 'base64'),
         }
