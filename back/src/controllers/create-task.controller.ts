@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, UsePipes } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { CurrentUser } from 'src/auth/current-user-decorator'
 import { UserPayload } from 'src/auth/jwt.strategy'
@@ -12,7 +12,7 @@ const createTaskBodySchema = z.object({
   dueDate: z.string().optional(),
   status: z.enum(['pending', 'in_progress', 'completed']).default('pending'),
   priority: z.enum(['low', 'medium', 'high']).default('medium'),
-});
+})
 
 type CreateTaskBodySchema = z.infer<typeof createTaskBodySchema>
 
@@ -28,13 +28,14 @@ export class CreateTaskController {
     @CurrentUser() user: UserPayload,
   ) {
     const { title, status, priority } = body
+    const userId = user.sub
 
     const newTask = await this.prisma.task.create({
       data: {
         title,
         status,
         priority,
-        authorId: user.sub,
+        authorId: userId,
       },
     })
 

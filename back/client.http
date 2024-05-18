@@ -37,3 +37,11 @@ Authorization: Bearer {{authToken}}
   "status": "pending",
   "priority": "medium"
 }
+
+
+###
+
+# @name list_tasks
+GET  {{baseUrl}}/tasks
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
