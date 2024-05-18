@@ -1,5 +1,18 @@
 import styled from 'styled-components'
+import LogoImg from '../../assets/logo.webp'
 
 export const Conteiner = styled.header`
-  background-color: ${({ theme }) => theme.colors.green['green-300']};
+  background-color: ${({ theme }) => theme.colors.background};
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  height: 150px;
+`
+export const Logo = styled.img.attrs(() => ({
+  src: LogoImg,
+}))`
+  height: 150px;
+  width: 150px;
 `
