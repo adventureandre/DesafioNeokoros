@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.modules'
 
 import { AuthenticateController } from './controllers/authenticate.controller'
 import { CreateAccountController } from './controllers/create-account.controller'
+import { CreateTaskController } from './controllers/create-task.controller'
 
 @Module({
   imports: [
@@ -15,7 +16,11 @@ import { CreateAccountController } from './controllers/create-account.controller
     }),
     AuthModule,
   ],
-  controllers: [CreateAccountController, AuthenticateController],
+  controllers: [
+    CreateAccountController,
+    AuthenticateController,
+    CreateTaskController,
+  ],
   providers: [PrismaService],
 })
 export class AppModule {}
