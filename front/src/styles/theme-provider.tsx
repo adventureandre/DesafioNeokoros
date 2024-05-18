@@ -5,7 +5,7 @@ import { darkTheme, lightTheme } from './theme'
 // Definindo tipos
 interface ThemeContextType {
   setIsTheme: (theme: 'dark' | 'light') => void
-  theme: string | null
+  theme: string
 }
 
 interface ThemeProviderProps {
@@ -24,7 +24,10 @@ export const ThemeProvider = ({
   children,
   storageKey = 'ThemeApp',
 }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState(() => localStorage.getItem(storageKey))
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem(storageKey)
+    return storedTheme || 'ligth'
+  })
 
   function setIsTheme(handletheme: 'dark' | 'light') {
     setTheme(handletheme)
