@@ -30,3 +30,10 @@ Content-Type: application/json
 POST {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+{
+  "title": "andre",
+  "description": "This is a description of the new task",
+  "status": "pending",
+  "priority": "medium"
+}
