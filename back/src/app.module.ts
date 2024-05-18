@@ -10,6 +10,7 @@ import { AuthenticateController } from './controllers/authenticate.controller'
 import { CreateAccountController } from './controllers/create-account.controller'
 import { CreateTaskController } from './controllers/create-task.controller'
 import { ListTasksController } from './controllers/list-tasks.controller'
+import { DeleteTaskController } from './controllers/deleteTaskController'
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ListTasksController } from './controllers/list-tasks.controller'
     AuthenticateController,
     CreateTaskController,
     ListTasksController,
+    DeleteTaskController,
   ],
   providers: [PrismaService],
 })
