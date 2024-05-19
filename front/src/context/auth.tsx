@@ -21,17 +21,25 @@ interface signInProps {
   password: string
 }
 
+interface SignUpProps {
+  name: string
+  email: string
+  password: string
+}
+
 interface AuthContextType {
   userId: UserId | null
   signed: boolean
   signIn: ({ email, password }: signInProps) => Promise<void>
   signOut: () => void
+  signUp: ({ name, email, password }: SignUpProps) => Promise<void>
   loading: boolean
 }
 
 export const AuthContext = createContext<AuthContextType>({
   signIn: async () => {},
   signOut: () => {},
+  signUp: async () => {},
   signed: false,
   userId: null,
   loading: true,
@@ -71,6 +79,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }
 
+  const signUp = async ({ name, email, password }: SignUpProps) => {
+    try {
+      const response = await api.post('/accounts', { name, email, password })
+      return response.data
+    } catch (e) {
+      throw new Error('Error ao criar Conta.')
+    }
+  }
+
   const signOut = () => {
     localStorage.removeItem('@AuthNeokoros:accessToken')
     localStorage.removeItem('@AuthNeokoros:userId')
@@ -86,6 +103,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     userId,
     signed,
     signIn,
+    signUp,
     signOut,
     loading,
   }
