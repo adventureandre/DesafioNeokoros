@@ -7,9 +7,9 @@ export const Container = styled.main`
 
   background: linear-gradient(135deg, #3a4c7e, #724fad);
 
-
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 `
 export const CardTodo = styled.section`
   width: 60%;

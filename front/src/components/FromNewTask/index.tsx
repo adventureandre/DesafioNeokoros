@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '../../lib/axios'
 import { toast } from 'sonner'
+import { useTasks } from '../../context/TaskContext'
 
 const schemaNewTask = z.object({
   newTask: z.string(),
@@ -13,6 +14,7 @@ const schemaNewTask = z.object({
 type SchemaNewTask = z.infer<typeof schemaNewTask>
 
 export const FormNewTask = () => {
+  const { fetchTasks } = useTasks()
   const { register, handleSubmit, reset } = useForm<SchemaNewTask>({
     resolver: zodResolver(schemaNewTask),
   })
@@ -56,6 +58,7 @@ export const FormNewTask = () => {
         },
       )
       toast.success('Tarefa adicionada!.')
+      fetchTasks()
       reset()
     } catch (e) {
       throw new Error('Failed to create task: ' + e)

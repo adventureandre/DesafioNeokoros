@@ -44,8 +44,18 @@ export const TaskProvider = ({ children }: TaskProviderProps) => {
     // Lógica para atualizar status da tarefa
   }
 
-  const handleDeleteTask = (id: string) => {
-    // Lógica para deletar a tarefa
+  const handleDeleteTask = async (id: string) => {
+    const token = await localStorage.getItem('@AuthNeokoros:accessToken')
+    try {
+      await api.delete(`/tasks/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      fetchTasks()
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   useEffect(() => {

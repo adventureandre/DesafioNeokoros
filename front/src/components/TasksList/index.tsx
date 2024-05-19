@@ -1,3 +1,4 @@
+import { Trash } from 'phosphor-react'
 import { useTasks } from '../../context/TaskContext'
 import {
   Container,
@@ -9,7 +10,7 @@ import {
 } from './styles'
 
 export const TaskList = () => {
-  const { tasks } = useTasks()
+  const { tasks, handleStatusTask, handleDeleteTask } = useTasks()
   const totalConcluidas = tasks!.filter(
     (task) => task.status === 'complete',
   ).length
@@ -28,9 +29,26 @@ export const TaskList = () => {
         </InfoTaskExecutadas>
       </InfoTask>
       <Content>
-        <TaskBox>
-akii
-        </TaskBox>
+        {tasks &&
+          tasks.map((task) => (
+            <TaskBox key={task.id}>
+              <input
+                type="checkbox"
+                name="completed"
+                id={`completed-${task.id}`}
+                onChange={() => handleStatusTask(task.id)}
+              />
+              <label
+                htmlFor={`completed-${task.id}`}
+                className={task.status === 'complete' ? 'completed' : ''}
+              >
+                {task.title}
+              </label>
+              <button onClick={() => handleDeleteTask(task.id)}>
+                <Trash size={24} />
+              </button>
+            </TaskBox>
+          ))}
       </Content>
     </Container>
   )

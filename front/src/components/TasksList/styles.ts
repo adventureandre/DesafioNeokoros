@@ -29,8 +29,6 @@ export const InfoTaskExecutadas = styled.span`
 `
 
 export const Content = styled.ul`
-  background: red;
-
   list-style: none;
   width: 100%;
   padding: 0;
@@ -38,12 +36,26 @@ export const Content = styled.ul`
 `
 
 export const TaskBox = styled.li`
-  background: #262626;
-  width: 100%;
-  min-height: 60px;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+
+  background: ${({ theme }) => theme.colors.primaryOver};
+
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 10px;
+
+  label {
+    flex-basis: 85%;
+  }
+  button {
+    background: none;
+    color: ${({ theme }) => theme.colors.white};
+    border: none;
+  }
+  .completed {
+    text-decoration: line-through !important;
+  }
 `
