@@ -11,7 +11,6 @@ export function App() {
       <Helmet titleTemplate="%S | NeoKoros" />
       <ThemeProvider>
         <AuthProvider>
-          <Header />
           <AppRouter />
         </AuthProvider>
       </ThemeProvider>

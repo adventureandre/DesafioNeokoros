@@ -32,15 +32,15 @@ export interface iTheme {
 
 export const darkTheme: iTheme = {
   colors: {
-    primary: '#864CFF',
-    primaryOver: '#864CCC',
-    secondary: '#41FFC6',
-    white: '#F5F5F5',
-    black: '#141414',
-    success: '#25D757',
-    danger: '#F85640',
-    background: '#181818',
-    border: '#222222',
+    primary: '#6e8efb', // Cor primária do design fornecido
+    primaryOver: '#864CCC', // Um tom de roxo mais escuro para hover
+    secondary: '#41FFC6', // Cor secundária do design fornecido
+    white: '#F5F5F5', // Branco para textos em fundo escuro
+    black: '#141414', // Preto para textos em fundo claro
+    success: '#25D757', // Verde de sucesso
+    danger: '#F85640', // Vermelho de erro
+    background: '#181818', // Fundo escuro
+    border: '#222222', // Cor de borda
     gray: {
       'gray-100': '#E1E1E6',
       'gray-200': '#D0D0D5',
@@ -64,15 +64,15 @@ export const darkTheme: iTheme = {
 
 export const lightTheme: iTheme = {
   colors: {
-    primary: '#864CFF',
-    primaryOver: '#864CCC',
-    secondary: '#2CC798',
-    white: '#333',
-    black: '#f7f7fd',
-    success: '#25D757',
-    danger: '#F85640',
-    background: '#FFFFFF',
-    border: '#eee',
+    primary: '#6e8efb', // Cor primária do design fornecido
+    primaryOver: '#864CCC', // Um tom de roxo mais escuro para hover
+    secondary: '#41FFC6', // Cor secundária do design fornecido
+    white: '#333', // Preto claro para textos em fundo claro
+    black: '#f7f7fd', // Branco para textos em fundo escuro
+    success: '#25D757', // Verde de sucesso
+    danger: '#F85640', // Vermelho de erro
+    background: '#FFFFFF', // Fundo branco
+    border: '#eee', // Cor de borda clara
     gray: {
       'gray-100': '#E1E1E6',
       'gray-200': '#D0D0D5',
