@@ -16,6 +16,7 @@ import {
 } from './styles'
 import { Envelope, Key } from 'phosphor-react'
 import { Navigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 export const SignIn = () => {
   const { signIn, signed } = useAuth()
@@ -28,6 +29,9 @@ export const SignIn = () => {
       await signIn({ email, password })
     } catch (error) {
       console.error('Failed to sign in:', error)
+      toast.error(
+        'Credenciais inválidas. Por favor, verifique suas informações e tente novamente.',
+      )
     }
   }
 

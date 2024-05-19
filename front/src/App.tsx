@@ -1,14 +1,19 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async'
-import { Header } from './components/Header'
 import { GlobalStyles } from './styles/global'
 import { ThemeProvider } from './styles/theme-provider'
 import { AppRouter } from './routes'
 import { AuthProvider } from './context/auth'
+import { Toaster } from 'sonner'
 
 export function App() {
   return (
     <HelmetProvider>
       <Helmet titleTemplate="%S | NeoKoros" />
+      <Toaster
+        richColors
+        position="top-right"
+        style={{ width: '400px', height: '60px' }}
+      />
       <ThemeProvider>
         <AuthProvider>
           <AppRouter />
