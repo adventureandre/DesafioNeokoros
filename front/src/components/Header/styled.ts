@@ -9,10 +9,11 @@ export const Conteiner = styled.header`
   justify-content: center;
 
   height: 150px;
+  margin-bottom: 5px;
 `
 export const Logo = styled.img.attrs(() => ({
   src: LogoImg,
 }))`
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
 `
