@@ -11,6 +11,7 @@ import { CreateAccountController } from './controllers/create-account.controller
 import { CreateTaskController } from './controllers/create-task.controller'
 import { ListTasksController } from './controllers/list-tasks.controller'
 import { DeleteTaskController } from './controllers/deleteTaskController'
+import { FindUserById } from './controllers/find-UserById'
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { DeleteTaskController } from './controllers/deleteTaskController'
     CreateTaskController,
     ListTasksController,
     DeleteTaskController,
+    FindUserById,
   ],
   providers: [PrismaService],
 })

@@ -7,8 +7,8 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-  "name": "Andre Luiz",
-  "email": "admin@adventure.dev.br",
+  "name": "Aurora",
+  "email": "aurora@adventure.dev.br",
   "password": "123456"
 }
 
@@ -51,5 +51,12 @@ Authorization: Bearer {{authToken}}
 
 # @name delete_tasks
 DELETE {{baseUrl}}/tasks/0bd7ba2b-fdee-4063-8c9f-22864a1a6ff9
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###2
+
+# @name find_user
+GET {{baseUrl}}/users/98ae80e8-c6b7-4417-9b7f-c6208cf08f81
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
