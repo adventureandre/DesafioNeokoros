@@ -50,6 +50,7 @@ export const RightSection = styled.div`
 export const ErrorMsg = styled.span`
   display: block;
   margin-top: -18px !important;
+  margin-bottom: 5px;
   color: ${({ theme }) => theme.colors.danger};
 `
 
