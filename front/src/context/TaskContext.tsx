@@ -15,7 +15,7 @@ interface TaskProviderProps {
 interface TaskContextData {
   tasks: TaskProps[] | undefined
   fetchTasks: () => void
-  handleStatusTask: (id: string) => void
+  handleStatusTask: (id: string, status: string) => void
   handleDeleteTask: (id: string) => void
 }
 
@@ -40,8 +40,27 @@ export const TaskProvider = ({ children }: TaskProviderProps) => {
     }
   }
 
-  const handleStatusTask = (id: string) => {
-    // Lógica para atualizar status da tarefa
+  const handleStatusTask = async (
+    id: string,
+    status: 'pending' | 'in_progress' | 'completed',
+  ) => {
+    const token = await localStorage.getItem('@AuthNeokoros:accessToken')
+    if (token) {
+      try {
+        await api.put(
+          `/tasks/${id}`,
+          { status },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        fetchTasks()
+      } catch (e) {
+        console.error(e)
+      }
+    }
   }
 
   const handleDeleteTask = async (id: string) => {

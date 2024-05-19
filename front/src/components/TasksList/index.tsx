@@ -8,23 +8,28 @@ import {
   InfoTaskTotal,
   TaskBox,
 } from './styles'
+import { TaskProps } from '../../pages/Tasks'
 
 export const TaskList = () => {
   const { tasks, handleStatusTask, handleDeleteTask } = useTasks()
-  const totalConcluidas = tasks!.filter(
-    (task) => task.status === 'complete',
-  ).length
+  const totalConcluidas =
+    tasks?.filter((task) => task.status === 'completed').length || 0
+
+  const toggleTaskStatus = (task: TaskProps) => {
+    const newStatus = task.status === 'completed' ? 'pending' : 'completed'
+    handleStatusTask(task.id, newStatus)
+  }
 
   return (
     <Container>
       <InfoTask>
         <InfoTaskTotal>
-          Tarefas criadas <em>{tasks!.length}</em>
+          Tarefas criadas <em>{tasks?.length || 0}</em>
         </InfoTaskTotal>
         <InfoTaskExecutadas>
           Concluídas{' '}
           <em>
-            {totalConcluidas} de {tasks!.length}
+            {totalConcluidas} de {tasks?.length || 0}
           </em>
         </InfoTaskExecutadas>
       </InfoTask>
@@ -36,11 +41,12 @@ export const TaskList = () => {
                 type="checkbox"
                 name="completed"
                 id={`completed-${task.id}`}
-                onChange={() => handleStatusTask(task.id)}
+                checked={task.status === 'completed'}
+                onChange={() => toggleTaskStatus(task)}
               />
               <label
                 htmlFor={`completed-${task.id}`}
-                className={task.status === 'complete' ? 'completed' : ''}
+                className={task.status === 'completed' ? 'completed' : ''}
               >
                 {task.title}
               </label>

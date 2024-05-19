@@ -12,6 +12,7 @@ import { CreateTaskController } from './controllers/create-task.controller'
 import { ListTasksController } from './controllers/list-tasks.controller'
 import { DeleteTaskController } from './controllers/deleteTaskController'
 import { FindUserById } from './controllers/find-UserById'
+import { UpdateTaskController } from './controllers/update-task.controller'
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { FindUserById } from './controllers/find-UserById'
     ListTasksController,
     DeleteTaskController,
     FindUserById,
+    UpdateTaskController,
   ],
   providers: [PrismaService],
 })

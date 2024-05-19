@@ -19,6 +19,7 @@ export const FormNewTask = () => {
     resolver: zodResolver(schemaNewTask),
   })
 
+  // Passar para o Contexto
   const checkTaskDuplicate = async (title: string) => {
     const token = localStorage.getItem('@AuthNeokoros:accessToken')
     const response = await api.get('/tasks', {
@@ -33,6 +34,7 @@ export const FormNewTask = () => {
     return response.data.tasks.length > 0
   }
 
+  // Passar para o Contexto
   const handleNewTask = async (data: SchemaNewTask) => {
     const title = data.newTask
     const token = await localStorage.getItem('@AuthNeokoros:accessToken')

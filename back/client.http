@@ -54,9 +54,24 @@ DELETE {{baseUrl}}/tasks/0bd7ba2b-fdee-4063-8c9f-22864a1a6ff9
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
-###2
+###
 
 # @name find_user
 GET {{baseUrl}}/users/98ae80e8-c6b7-4417-9b7f-c6208cf08f81
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
+
+
+###
+
+# @name update_task
+PUT {{baseUrl}}/tasks/43affb1e-a9a7-4996-a36a-106c84f41a38
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Updated Title",
+  "description": "Updated description of the task",
+  "status": "completed",
+  "priority": "high"
+}

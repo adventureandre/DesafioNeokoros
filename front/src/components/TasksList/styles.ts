@@ -57,5 +57,6 @@ export const TaskBox = styled.li`
   }
   .completed {
     text-decoration: line-through !important;
+    color: #b2b2b2;
   }
 `

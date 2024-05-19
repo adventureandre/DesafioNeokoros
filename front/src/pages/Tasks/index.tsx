@@ -9,7 +9,7 @@ export interface TaskProps {
   id: string
   title: string
   description: string | null
-  status: 'pending' | 'complete' | 'in-progress'
+  status: 'pending' | 'completed' | 'in-progress'
   priority: 'low' | 'high' | 'medium'
 }
 

@@ -19,22 +19,26 @@ import {
 import { CheckCircle, Envelope, IdentificationBadge, Key } from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
 
-const schema = z.object({
-  name: z.string(),
-  email: z.string().email({ message: 'Digite um email válido' }),
-  password: z
-    .string()
-    .min(6, { message: 'Senha deve ter no mínimo 6 caracteres' }),
-  confirmPassword: z
-    .string()
-    .min(6, { message: 'Senha deve ter no mínimo 6 caracteres' }),
-})
+const schema = z
+  .object({
+    name: z.string().nonempty({ message: 'Nome é obrigatório' }),
+    email: z.string().email({ message: 'Digite um email válido' }),
+    password: z
+      .string()
+      .min(6, { message: 'Senha deve ter no mínimo 6 caracteres' }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: 'Senha deve ter no mínimo 6 caracteres' }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'As senhas não conferem',
+    path: ['confirmPassword'],
+  })
 
 type SchemaTypes = z.infer<typeof schema>
 
 export const SignUp = () => {
   const { signed, signUp } = useAuth()
-
   const navigate = useNavigate()
 
   const {
@@ -54,7 +58,7 @@ export const SignUp = () => {
       })
       navigate('/')
     } catch (error) {
-      console.error('Failed to sign Up:', error)
+      console.error('Failed to sign up:', error)
     }
   }
 
@@ -84,7 +88,7 @@ export const SignUp = () => {
                 {...register('name')}
               />
             </InputContainer>
-            {errors.email && <ErrorMsg>{errors.name.message}</ErrorMsg>}
+            {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
 
             <InputContainer>
               <IconWrapper>
