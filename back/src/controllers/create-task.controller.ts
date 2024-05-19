@@ -27,7 +27,7 @@ export class CreateTaskController {
     body: CreateTaskBodySchema,
     @CurrentUser() user: UserPayload,
   ) {
-    const { title, status, priority } = body
+    const { title, status, priority, description, dueDate } = body
     const userId = user.sub
 
     const newTask = await this.prisma.task.create({
@@ -35,6 +35,8 @@ export class CreateTaskController {
         title,
         status,
         priority,
+        description,
+        dueDate,
         authorId: userId,
       },
     })

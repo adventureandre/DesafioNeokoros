@@ -84,7 +84,7 @@ export const SignUp = () => {
                 {...register('name')}
               />
             </InputContainer>
-            {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
+            {errors.email && <ErrorMsg>{errors.name.message}</ErrorMsg>}
 
             <InputContainer>
               <IconWrapper>

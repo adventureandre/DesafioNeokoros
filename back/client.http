@@ -19,8 +19,8 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-   "email": "admin@adventure.dev.br",
-  "password": "12356"
+    "email": "admin@admin.admin",
+    "password": "123456"
 }
 
 
