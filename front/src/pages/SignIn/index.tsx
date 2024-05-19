@@ -52,7 +52,7 @@ export const SignIn = () => {
                 </IconWrapper>
                 <Input
                   type="email"
-                  placeholder="Email Address"
+                  placeholder="Digite seu Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -63,14 +63,14 @@ export const SignIn = () => {
                 </IconWrapper>
                 <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </InputContainer>
 
               <Button type="submit">Entrar</Button>
-              <Link href="#">Create Account</Link>
+              <Link href="/signUp">Criar Conta</Link>
             </form>
           </RightSection>
         </Card>

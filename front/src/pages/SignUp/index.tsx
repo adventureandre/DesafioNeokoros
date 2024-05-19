@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { useHistory } from 'react-router-dom' // Importe o useHistory
 
 import { useAuth } from '../../context/auth'
 import {
@@ -18,6 +17,7 @@ import {
   ErrorMsg,
 } from './styles'
 import { CheckCircle, Envelope, IdentificationBadge, Key } from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
   name: z.string(),
@@ -34,7 +34,9 @@ type SchemaTypes = z.infer<typeof schema>
 
 export const SignUp = () => {
   const { signed, signUp } = useAuth()
-  const history = useHistory() // Inicialize o useHistory
+
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -50,14 +52,14 @@ export const SignUp = () => {
         email: data.email,
         password: data.password,
       })
-      history.push('/signin') // Use history.push para navegar para a página de login
+      navigate('/')
     } catch (error) {
       console.error('Failed to sign Up:', error)
     }
   }
 
   if (signed) {
-    history.push('/') // Redirecionar se já estiver logado
+    navigate('/')
     return null
   }
 
