@@ -67,7 +67,7 @@ export const lightTheme: iTheme = {
     primary: '#6e8efb', // Cor primária do design fornecido
     primaryOver: '#864CCC', // Um tom de roxo mais escuro para hover
     secondary: '#41FFC6', // Cor secundária do design fornecido
-    white: '#333', // Preto claro para textos em fundo claro
+    white: '#F5F5F5', // Preto claro para textos em fundo claro
     black: '#f7f7fd', // Branco para textos em fundo escuro
     success: '#25D757', // Verde de sucesso
     danger: '#F85640', // Vermelho de erro

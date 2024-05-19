@@ -1,9 +1,5 @@
-import { Conteiner, Logo } from './styled'
+import { Logo } from './styled'
 
 export const Header = () => {
-  return (
-    <Conteiner>
-      <Logo />
-    </Conteiner>
-  )
+  return <Logo />
 }
