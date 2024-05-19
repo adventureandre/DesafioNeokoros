@@ -3,7 +3,6 @@ import { Button, Input } from './styles'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useAuth } from '../../context/auth'
 import { api } from '../../lib/axios'
 import { toast } from 'sonner'
 
@@ -14,8 +13,7 @@ const schemaNewTask = z.object({
 type SchemaNewTask = z.infer<typeof schemaNewTask>
 
 export const FormNewTask = () => {
-  const { userId } = useAuth()
-  const { register, handleSubmit } = useForm<SchemaNewTask>({
+  const { register, handleSubmit, reset } = useForm<SchemaNewTask>({
     resolver: zodResolver(schemaNewTask),
   })
 
@@ -30,16 +28,12 @@ export const FormNewTask = () => {
       },
     })
 
-    // console.log(response.data)
     return response.data.tasks.length > 0
   }
 
   const handleNewTask = async (data: SchemaNewTask) => {
     const title = data.newTask
     const token = await localStorage.getItem('@AuthNeokoros:accessToken')
-    // console.log('data', data)
-    // console.log('id', userId)
-    // console.log('token', token)
 
     try {
       const isDuplicate = await checkTaskDuplicate(title)
@@ -61,6 +55,8 @@ export const FormNewTask = () => {
           },
         },
       )
+      toast.success('Tarefa adicionada!.')
+      reset()
     } catch (e) {
       throw new Error('Failed to create task: ' + e)
     }

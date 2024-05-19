@@ -1,9 +1,14 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { GlobalStyles } from './styles/global'
+
 import { ThemeProvider } from './styles/theme-provider'
+
 import { AppRouter } from './routes'
+
 import { AuthProvider } from './context/auth'
+
 import { Toaster } from 'sonner'
+import { TaskProvider } from './context/TaskContext'
 
 export function App() {
   return (
@@ -16,7 +21,9 @@ export function App() {
       />
       <ThemeProvider>
         <AuthProvider>
-          <AppRouter />
+          <TaskProvider>
+            <AppRouter />
+          </TaskProvider>
         </AuthProvider>
       </ThemeProvider>
       <GlobalStyles />

@@ -34,6 +34,7 @@ interface AuthContextType {
   signOut: () => void
   signUp: ({ name, email, password }: SignUpProps) => Promise<void>
   loading: boolean
+  token: string | null
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -43,19 +44,26 @@ export const AuthContext = createContext<AuthContextType>({
   signed: false,
   userId: null,
   loading: true,
+  token: null,
 })
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [userId, setUserId] = useState<UserId | null>(null)
+  const [token, setToken] = useState<string | null>(null)
   const [signed, setSigned] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const loadingStoreData = () => {
-    const storegeUserId = localStorage.getItem('@AuthNeokoros:userId')
-    const userToken = localStorage.getItem('@AuthNeokoros:accessToken')
+  const loadingStoreData = async () => {
+    const storegeUserToken = await localStorage.getItem(
+      '@AuthNeokoros:accessToken',
+    )
+    const storegeUserId = await localStorage.getItem('@AuthNeokoros:userId')
 
-    if (storegeUserId && userToken) {
+    if (storegeUserId && storegeUserToken) {
+      const userToken = storegeUserToken
       const userID: UserId = { userId: storegeUserId }
+
+      setToken(userToken)
       setUserId(userID)
       setSigned(true)
     }
@@ -105,6 +113,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     signIn,
     signUp,
     signOut,
+    token,
     loading,
   }
 

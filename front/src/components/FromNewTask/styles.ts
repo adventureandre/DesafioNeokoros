@@ -9,8 +9,7 @@ export const Input = styled.input`
   color: #1a1c1c;
   font-size: 18px;
   font-weight: 400;
-
-  width: 60%;
+  width: 100%;
 
   &:hover,
   &:focus {

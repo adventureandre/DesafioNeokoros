@@ -5,14 +5,18 @@ export const Container = styled.main`
   align-items: center;
   flex-direction: column;
 
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: linear-gradient(135deg, #3a4c7e, #724fad);
+
 
   width: 100%;
   height: 100vh;
 `
 export const CardTodo = styled.section`
-  width: 70%;
+  width: 60%;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   form {
     display: flex;
