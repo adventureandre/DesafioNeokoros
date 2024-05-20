@@ -32,8 +32,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "sivaldo",
-  "description": "This is a description of the new task",
+  "title": "Ler um livro",
+  "description": "Começar ler um livro hoje!",
   "status": "pending",
   "priority": "medium"
 }
@@ -50,7 +50,7 @@ Authorization: Bearer {{authToken}}
 ###
 
 # @name delete_tasks
-DELETE {{baseUrl}}/tasks/0bd7ba2b-fdee-4063-8c9f-22864a1a6ff9
+DELETE {{baseUrl}}/tasks/ed8e509d-3c44-41e0-90d5-ebce65f4d828
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
