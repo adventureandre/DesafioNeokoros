@@ -9,6 +9,7 @@ import {
   TaskBox,
 } from './styles'
 import { TaskProps } from '../../pages/Tasks'
+import { toast } from 'sonner'
 
 export const TaskList = () => {
   const { tasks, handleStatusTask, handleDeleteTask } = useTasks()
@@ -50,7 +51,12 @@ export const TaskList = () => {
               >
                 {task.title}
               </label>
-              <button onClick={() => handleDeleteTask(task.id)}>
+              <button
+                onClick={() => {
+                  handleDeleteTask(task.id)
+                  toast.error('Tarefa excluida!')
+                }}
+              >
                 <Trash size={24} />
               </button>
             </TaskBox>

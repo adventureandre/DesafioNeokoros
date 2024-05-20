@@ -4,6 +4,7 @@ import { CardTodo, Container } from './styles'
 import { Header } from '../../components/Header'
 import { FormNewTask } from '../../components/FromNewTask'
 import { TaskList } from '../../components/TasksList'
+import { PainelUser } from '../../components/PainelUser'
 
 export interface TaskProps {
   id: string
@@ -27,6 +28,7 @@ export const Tasks = () => {
         <FormNewTask />
         <TaskList />
       </CardTodo>
+      <PainelUser />
     </Container>
   )
 }
