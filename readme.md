@@ -43,5 +43,5 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir um problema ou e
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT. Consulte o [arquivo de licença](https://github.com/adventureandre/Lib/blob/main/LICENSE) para obter mais informações.
+Este projeto está licenciado sob a Licença MIT. Consulte o [arquivo de licença](https://github.com/adventureandre/DesafioNeokoros/blob/main/LICENSE) para obter mais informações.
 
